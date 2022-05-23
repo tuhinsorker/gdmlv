@@ -34,71 +34,129 @@
                         <div>
                             <h6 class="fs-17 fw-semi-bold mb-0">{{$ptitle}}</h6>
                         </div>
-                        <div class="text-end">
-                            <a href="{{url('/outlet')}}"  class="btn btn-success btn-sm mr-1 "><i class="fas fa-list mr-1"></i> List</a>
-                        </div>
                     </div>
                 </div>
 
-                <form action="" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <div class="row">
-                        <div class="card-body col-md-8">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    @input(['input_name' => 'title' , ])
+                   
+
+                    <div class="card-body">
+
+                        <form action="{{route('appinfo_update')}}" method="POST" enctype="multipart/form-data">
+                            @csrf
+
+                            <div class="mb-3 row">
+                                <div class="col-sm-3"><label class="font-weight-600">Title</label></div>
+                                <div class="col-sm-9">
+                                    <input type="text" name="title" class="form-control" required="1" value="{{$info->title}}">
                                 </div>
-                                <div class="col-md-6">
-                                    @input(['input_name' => 'email','type'=>'email'])
+                            </div> 
+
+                            <input type="hidden" name="id" value="{{$info->id}}">
+
+                            <div class="mb-3 row">
+                                <div class="col-sm-3"><label class="font-weight-600">Website Logo</label></div>
+                                <div class="col-sm-9">
+                                    <input type="file" name="web_logo" class="form-control" accept="image/*" >
+                                    <input type="hidden" name="web_logo_old" value="{{$info->web_logo}}">
+                                    <span>[gif,jpg,png,jpeg,webp and max size is 1MB]</span>
+                                </div> 
+                            </div>
+
+                            <div class="mb-3 row">
+                                <div class="col-sm-3"><label class="font-weight-600">Preview</label></div>
+                                <div class="col-sm-9">
+                                    <img src="{{url('images/'.$info->web_logo)}}" width="200" >
                                 </div>
-                                <div class="col-md-6">
-                                    @input(['input_name' => 'phone','type'=>'number'])
+                            </div>
+
+                            <div class="mb-3 row">
+                                <div class="col-sm-3"><label class="font-weight-600">Footer Logo</label></div>
+                                <div class="col-sm-9">
+                                    <input type="file" name="footer_logo" class="form-control" accept="image/*">
+                                    <input type="hidden" name="footer_logo_old" value="{{$info->footer_logo}}" >
+                                    <span>[gif,jpg,png,jpeg,webp and max size is 1MB]</span>
+                                </div>              
+                            </div>
+
+                            <div class="mb-3 row">
+                                <div class="col-sm-3"><label class="font-weight-600">Preview</label></div>
+                                <div class="col-sm-9">
+                                    <img src="{{url('images/'.$info->footer_logo)}}" width="200" >
                                 </div>
-                                <div class="col-md-6">
-                                    @input(['input_name' => 'tax_no','required' => false])
+                            </div>
+                            
+                           
+                            <div class="mb-3 row">
+                                <div class="col-sm-3"><label class="font-weight-600">Favicon</label></div>
+                                <div class="col-sm-9">
+                                    <input type="file" name="favicon" class="form-control" accept="image/*">
+                                    <input type="hidden" name="favicon_old" value="{{$info->favicon}}" >
+                                    <span>[gif,jpg,png,jpeg,webp and max size is 1MB]</span>
                                 </div>
-                                <div class="col-md-6">
-                                    @textarea(['input_name' => 'address' ])
+                            </div>
+
+                            <div class="mb-3 row">
+                                <div class="col-sm-3"><label class="font-weight-600">Preview</label></div>
+                                <div class="col-sm-9">
+                                    <img src="{{url('images/'.$info->favicon)}}" width="200" >
                                 </div>
-                                <div class="col-md-6">
-                                    @textarea(['input_name' => 'footer_text'])
+                            </div>
+
+
+                            <div class="mb-3 row">
+                                <div class="col-sm-3"><label class="font-weight-600">App Logo</label></div>
+                                <div class="col-sm-9">
+                                    <input type="file" name="app_logo" class="form-control" accept="image/*">
+                                    <input type="hidden" name="app_logo_old" value="{{$info->app_logo}}" >
+                                    <span>[gif,jpg,png,jpeg,webp and max size is 1MB]</span>
                                 </div>
-                                <div class="col-md-6 mt-2">
-                                    <label class="role col-md-3 mt-2">Currency<span class="text-danger">*</span></label>
-                                    <select name="currency_id" id="currency_id" class="form-control {{ $errors->first('currency_id') ? 'is-invalid' : '' }} form-control-sm basic-single" >
-                                        <option value="">Select One</option>
-                                        @foreach($currencies as $key => $currency)
-                                        <option value="{{  $currency->id }}">{{ $currency->title}}</option>
-                                        @endforeach
+                            </div>
+                            <div class="mb-3 row">
+                                <div class="col-sm-3"><label class="font-weight-600">Preview</label></div>
+                                <div class="col-sm-9">
+                                    <img src="{{url('images/'.$info->app_logo)}}" width="200" >
+                                </div>
+                            </div>
+
+                            <div class="mb-3 row">
+                                <div class="col-sm-3"><label class="font-weight-600">Footer Text</label></div>
+                                <div class="col-sm-9">
+                                    <textarea name="footer_text" class="form-control">{{$info->footer_text}}</textarea>
+                                </div>
+                            </div> 
+
+
+                            <div class="mb-3 row">
+                                <div class="col-sm-3"><label class="font-weight-600">Copy Right</label></div>
+                                <div class="col-sm-9">
+                                    <textarea name="copy_right" class="form-control">{{$info->copy_right}}</textarea>
+                                </div>
+                            </div> 
+
+                            <div class="mb-3 row">
+                                <div class="col-sm-3"><label class="font-weight-600">Time Zone</label></div>
+                                <div class="col-sm-9">
+                                    <select name="time_zone" class="form-control" required="1">
+                                        <option value="">Select</option>
+                                        <?php foreach (timezone_identifiers_list() as $value) { ?>
+                                            <option value="{{$value}}" {{(@$info->time_zone==$value?'selected':null)}}>{{$value}}</option>";
+                                        <?php } ?>
                                     </select>
-                                    @if ($errors->has('currency_id'))
-                                        <div class="error text-danger">{{ $errors->first('currency_id') }}</div>
-                                    @endif
-                                </div>
-                                <div class="col-md-6 mt-3">
-                                    @radio(['input_name'=>'rtl_ltr','data_set' => [1 => 'LTR' ,2 => 'RTL']])
                                 </div>
                             </div>
-                        </div>
-                        <div class="card-body col-md-1">
 
-                        </div>
-                        <div class="card-body col-md-3">
-                            <div class="row">
-                                <div class="col-md-12 mt-5">
-                                    @imageWithPreview(['input_name' => 'logo'])
+                            <div class="mb-3 row">
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-9">
+                                    <button class="btn btn-md btn-success"  type="submit" >Update</button>
                                 </div>
-                                <div class="col-md-12 mt-5">
-                                    @imageWithPreview(['input_name' => 'febicon'])
-                                </div>
+                            </div> 
+                                              
+                        </form>
+                        
+                    </div>
 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-footer form-footer">
-                        <button type="submit" class="btn btn-primary btn-sm ">Submit</button>
-                    </div>
-                </form>
+
 
             </div>
         </div>

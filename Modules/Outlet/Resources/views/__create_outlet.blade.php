@@ -48,14 +48,17 @@
                             <div class="mb-3 row">
                                 <label for="type" class="col-sm-3 col-form-label fw-semi-bold">Outlet Type</label>
                                 <div class="col-sm-9">
-                                    <input class="form-control" type="text" name="type" id="type">
+                                    {!! Form::select('type', $types, '', ['class' => 'form-control'])!!}
                                 </div>
                             </div>
 
+                          
                             <div class="mb-3 row">
                                 <label for="channel" class="col-sm-3 col-form-label fw-semi-bold">Outlet Channel</label>
                                 <div class="col-sm-9">
-                                    <input class="form-control" type="text" name="channel" id="channel">
+                                    <div class="col-sm-9">
+                                        {!! Form::select('channel', $channels, '', ['class' => 'form-control'])!!}
+                                    </div>
                                 </div>
                             </div>
 

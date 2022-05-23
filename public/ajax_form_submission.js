@@ -14,7 +14,7 @@
                  toastr.warning('Please fulfill all required fields.', 'Required Missing!');
                  $('.actionBtn').prop('disabled', false);
              }else {
-                 $('.actionBtn').prop('disabled', true);
+                $('.actionBtn').prop('disabled', true);
                 ajaxSubmit(event, $(this));
              }
              form.classList.add('was-validated');
@@ -64,6 +64,52 @@ function ajaxSubmit(e, form) {
         }
     });
 }
+
+
+$(document).ready(function(){
+    //tableBasic.initialize();
+    $('.custool').tooltip();
+	// select 2 dropdown 
+    $("select.form-control:not(.form-control-sm):not([required])").select2({
+        placeholder: "Select option",
+        allowClear: true
+    });
+    $("select.form-control:not(.form-control-sm)[required]").select2({
+        placeholder: "Select option",
+        allowClear: false
+    });
+
+});
+
+
+function dobValidator(id, min, max) {
+    if( id =='' || min =='' || max =='' ){
+        return '';
+    }
+    var birthday = document.getElementById(id).value; // Don't get Date yet...
+    var regexVar = /^([0-9]{4})\-([0-9]{2})\-([0-9]{2})$/; // add anchors; use literal
+    var regexVarTest = regexVar.test(birthday); // pass the string, not the Date
+    var userBirthDate = new Date(birthday.replace(regexVar, "$1-$2-$3")); // Use YYYY-MM-DD format
+    var todayYear = (new Date()).getFullYear(); // Always use FullYear!!
+    var cutOff19 = new Date(); // should be a Date
+    cutOff19.setFullYear(todayYear - min); // ...
+    var cutOff95 = new Date();
+    cutOff95.setFullYear(todayYear - max);
+    var dobErrMsg;
+    if (!regexVarTest) { // Test this before the other tests
+        dobErrMsg = "enter date of birth as yyyy-mm-dd";
+    } else if (isNaN(userBirthDate)) {
+        dobErrMsg = "date of birth is invalid";
+    } else if (userBirthDate > cutOff19) {
+        dobErrMsg = "you have to be older than "+min;
+    } else if (userBirthDate < cutOff95) {
+        dobErrMsg = "you have to be younger than "+max;
+    } else {
+        dobErrMsg = "";
+    }
+    return dobErrMsg; // Return the date instead of an undefined variable
+}
+
 
 
 toastr.options = {

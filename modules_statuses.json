@@ -1,4 +1,7 @@
 {
     "Outlet": true,
-    "Setting": true
+    "Setting": true,
+    "Client": true,
+    "Users": true,
+    "Product": true
 }

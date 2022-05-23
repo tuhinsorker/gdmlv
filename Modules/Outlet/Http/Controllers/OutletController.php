@@ -4,6 +4,8 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Outlet\Entities\Outlet;
+use Modules\Outlet\Entities\OutletChannel;
+use Modules\Outlet\Entities\OutletType;
 
 class OutletController extends Controller
 {
@@ -20,12 +22,16 @@ class OutletController extends Controller
                 ->join("outlet_channels","outlet_channels.id","=","outlets.channel_id")
                 ->get();
 
-        //$outlet = Outlet::withoutGlobalScopes([Asc::class])->get();
+        $channels = OutletChannel::pluck('channel_name','id');
+        $OutletType = OutletType::pluck('type_name','id');
 
         return view('outlet::index',[
             'outlets'=>$outlet,
+            'channels'=>$channels,
+            'types'=>$OutletType,
             'ptitle'=>'Outlet List'
         ]);
+        
     }
 
     /**
@@ -35,9 +41,14 @@ class OutletController extends Controller
     public function create()
     {
 
+        $channels = OutletChannel::pluck('channel_name','id');
+        $OutletType = OutletType::pluck('type_name','id');
+
         $ptitle = 'Create Outlet';
         return view('outlet::__create_outlet',[
-            'ptitle'=>$ptitle
+            'ptitle'=>$ptitle,
+            'channels'=>$channels,
+            'types'=>$OutletType
         ]);
     }
 

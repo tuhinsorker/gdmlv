@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,5 +14,6 @@
 */
 
 Route::prefix('setting')->group(function() {
-    Route::get('/', 'SettingController@index');
+    Route::get('/app_setting', 'SettingController@index')->name('app_setting');
+    Route::post('/appinfo_update', 'SettingController@update')->name('appinfo_update');
 });

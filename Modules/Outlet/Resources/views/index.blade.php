@@ -74,7 +74,7 @@
     
     <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-xl">
 
             <form action="{{route('outlet_channel_store')}}" method="POST" enctype="multipart/form-data" class="ajaxForm needs-validation" id="ajaxForm" novalidate="" data="showCallBackData" accept-charset="UTF-8">
       
@@ -92,14 +92,15 @@
                         <div class="mb-3 row">
                             <label for="type" class="col-sm-3 col-form-label fw-semi-bold">Outlet Type</label>
                             <div class="col-sm-9">
-                                <input class="form-control" type="text" name="type" id="type_name">
+                                {!! Form::select('type', $types, '', ['class' => 'form-control'])!!}
                             </div>
                         </div>
 
+                      
                         <div class="mb-3 row">
                             <label for="channel" class="col-sm-3 col-form-label fw-semi-bold">Outlet Channel</label>
                             <div class="col-sm-9">
-                                <input class="form-control" type="text" name="channel" id="channel_name">
+                                {!! Form::select('channel', $channels, '', ['class' => 'form-control'])!!}
                             </div>
                         </div>
 
@@ -221,8 +222,8 @@
                     dataType: 'JSON',
                     success: function(res) {
 
-                        $('#type_name').val(res.data.type_id);
-                        $('#channel_name').val(res.data.channel_id);
+                        $('#type_name').val(res.data.type_id).trigger('change');
+                        $('#channel_name').val(res.data.channel_id).trigger('change');
     
                         $('#outlet_name').val(res.data.outlet_name);
                         $('#outlet_address').val(res.data.outlet_address);

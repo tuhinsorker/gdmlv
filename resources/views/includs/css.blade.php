@@ -13,5 +13,11 @@
 
         <link href="{{ asset('assets/plugins/sweetalert/sweetalert.css')}}" rel="stylesheet">
         <link href="{{ asset('assets/plugins/toastr/toastr.css')}}" rel="stylesheet">
+        <link href="{{ asset('assets/plugins/daterangepicker/daterangepicker.css')}}" rel="stylesheet">
+
+        
+        <link href="{{ asset('assets/plugins/select2-bootstrap4/dist/select2-bootstrap4.min.css')}}" rel="stylesheet">
+        <link href="{{ asset('assets/plugins/select2/dist/css/select2.min.css')}}" rel="stylesheet">
+        <link href="{{ asset('assets/plugins/jquery.sumoselect/sumoselect.min.css')}}" rel="stylesheet">
 
         <script src="{{ asset('assets/plugins/jQuery/jquery.min.js')}}"></script>
