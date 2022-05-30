@@ -3,254 +3,382 @@
 @endpush
 
 @section('content')
-     <!--/.Content Header (Page header)--> 
-     <div class="body-content">
-        <div class="row">
 
-            <div class="col-lg-12">
-                <div class="card">
+<div class="body-content">
 
-                    <div class="card-header">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div>
-                                <h6 class="fs-17 fw-semi-bold mb-0">{{$ptitle}}</h6>
+    <div class="row">
+        <div class="col-12">
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header d-flex justify-content-end mb-3" id="flush-headingOne">
+                        <button type="button" class="fs-17 filter-bt" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne"><img  class="me-2 h-24" src="assets/dist/img/icons8-filter-30.png" alt="">Filter</button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse bg-white px-3" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                        <div class="row">
+                            <div class="col-12 col-md-6 col-lg-3 mb-3">
+                                <label class="col-form-label text-end fw-semi-bold">Location</label>
+                                <div class="col-12">
+                                    <select class="form-control placeholder-single">                                       
+                                        <optgroup label="Central Time Zone">
+                                            <option value="AL">Alabama</option>
+                                            <option value="AR">Arkansas</option>
+                                            <option value="IL">Illinois</option>
+                                            <option value="IA">Iowa</option>
+                                            <option value="KS">Kansas</option>
+                                            <option value="KY">Kentucky</option>
+                                            <option value="LA">Louisiana</option>
+                                            <option value="MN">Minnesota</option>
+                                            <option value="MS">Mississippi</option>
+                                            <option value="MO">Missouri</option>
+                                            <option value="OK">Oklahoma</option>
+                                            <option value="SD">South Dakota</option>
+                                            <option value="TX">Texas</option>
+                                            <option value="TN">Tennessee</option>
+                                            <option value="WI">Wisconsin</option>
+                                        </optgroup>                                              
+                                    </select>
+                                </div>
                             </div>
-                            <div class="text-end">
-                                <a href="{{url('/outlet/create')}}"  class="btn btn-success btn-sm mr-1 "><i class="fas fa-plus mr-1"></i>Add New</a>
+                            <div class="col-12 col-md-6 col-lg-3 mb-3">
+                                <label class="col-form-label text-end fw-semi-bold">Field Staff</label>
+                                <div class="col-12">
+                                    <select class="form-control placeholder-single">                                       
+                                        <optgroup label="Central Time Zone">
+                                            <option value="AL">Alabama</option>
+                                            <option value="AR">Arkansas</option>
+                                            <option value="IL">Illinois</option>
+                                            <option value="IA">Iowa</option>
+                                            <option value="KS">Kansas</option>
+                                            <option value="KY">Kentucky</option>
+                                            <option value="LA">Louisiana</option>
+                                            <option value="MN">Minnesota</option>
+                                            <option value="MS">Mississippi</option>
+                                            <option value="MO">Missouri</option>
+                                            <option value="OK">Oklahoma</option>
+                                            <option value="SD">South Dakota</option>
+                                            <option value="TX">Texas</option>
+                                            <option value="TN">Tennessee</option>
+                                            <option value="WI">Wisconsin</option>
+                                        </optgroup>                                              
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                   
-
-                    <div class="card-body">
-                       
-                        
-                        <div class="table-responsive">
-                            <table id="outletList" class="table display table-bordered table-striped table-hover bg-white m-0 card-table">
-                                <thead>
-                                    <tr>
-                                        <th>Image</th>
-                                        <th>Outlet Name</th>
-                                        <th>Type name</th>
-                                        <th>Channel Name</th>
-                                        <th>Phone</th>
-                                        <th>Address</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach($outlets as $key => $outlet)
-                                    <tr>
-                                        <td>
-                                            <div>
-                                                <img src="{{url('/images/'.$outlet->outlet_image)}}" class="rounded-circle" width="50" alt="...">
-                                            </div>
-                                        </td>
-                                        <td>{{$outlet->outlet_name}}</td>
-                                        <td>{{$outlet->type_name}}</td>
-                                        <td>{{$outlet->channel_name}}</td>
-                                        <td>{{$outlet->outlet_phone}}</td>
-                                        <td>{{$outlet->outlet_address}}</td>
-
-                                        <td>
-                                            <a href="javascript:void(0)" class="btn btn-success-soft btn-sm me-1" id="editAction" data-route="{{ route('outlet_edit',$outlet->id) }}"  ><i class="far fa-edit"></i></a>
-                                            <a href="javascript:void(0)" class="btn btn-danger-soft btn-sm" id="deleteAction" data-route="{{ route('delete_outlet',$outlet->id) }}"><i class="far fa-trash-alt"></i></a>
-                                        </td>
-                                        
-                                    </tr>
-                                    @endforeach
-                                   
-                                </tbody>
-                            </table>
+                            <div class="col-12 col-md-6 col-lg-3 mb-3">
+                                <label class="col-form-label text-end fw-semi-bold">Outlet Type</label>
+                                <div class="col-12">
+                                    <select class="form-control placeholder-single">                                       
+                                        <optgroup label="Central Time Zone">
+                                            <option value="AL">Alabama</option>
+                                            <option value="AR">Arkansas</option>
+                                            <option value="IL">Illinois</option>
+                                            <option value="IA">Iowa</option>
+                                            <option value="KS">Kansas</option>
+                                            <option value="KY">Kentucky</option>
+                                            <option value="LA">Louisiana</option>
+                                            <option value="MN">Minnesota</option>
+                                            <option value="MS">Mississippi</option>
+                                            <option value="MO">Missouri</option>
+                                            <option value="OK">Oklahoma</option>
+                                            <option value="SD">South Dakota</option>
+                                            <option value="TX">Texas</option>
+                                            <option value="TN">Tennessee</option>
+                                            <option value="WI">Wisconsin</option>
+                                        </optgroup>                                              
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-3 mb-3">
+                                <label class="col-form-label text-end fw-semi-bold">Outlet Channel</label>
+                                <div class="col-12">
+                                    <select class="form-control placeholder-single">                                       
+                                        <optgroup label="Central Time Zone">
+                                            <option value="AL">Alabama</option>
+                                            <option value="AR">Arkansas</option>
+                                            <option value="IL">Illinois</option>
+                                            <option value="IA">Iowa</option>
+                                            <option value="KS">Kansas</option>
+                                            <option value="KY">Kentucky</option>
+                                            <option value="LA">Louisiana</option>
+                                            <option value="MN">Minnesota</option>
+                                            <option value="MS">Mississippi</option>
+                                            <option value="MO">Missouri</option>
+                                            <option value="OK">Oklahoma</option>
+                                            <option value="SD">South Dakota</option>
+                                            <option value="TX">Texas</option>
+                                            <option value="TN">Tennessee</option>
+                                            <option value="WI">Wisconsin</option>
+                                        </optgroup>                                              
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-3 mb-3">
+                                <button class="btn btn-primary me-2">Go</button>
+                                <button class="btn btn-danger">Reset</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-           
         </div>
-    </div><!--/.body content-->
-
-
+    </div>
     
-    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    
-        <div class="modal-dialog modal-xl">
 
-            <form action="{{route('outlet_channel_store')}}" method="POST" enctype="multipart/form-data" class="ajaxForm needs-validation" id="ajaxForm" novalidate="" data="showCallBackData" accept-charset="UTF-8">
-      
-                @csrf
-
-                <div class="modal-content">
-                    
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div class="row mb-3">
+        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+            <div class="card card-stats statistic-box mb-4">
+                <div class="card-header card-header-warning card-header-icon position-relative border-0 text-end px-3 py-0">
+                    <div class="card-icon d-flex align-items-center justify-content-center">
+                        <i class="typcn typcn-device-tablet"></i>
                     </div>
-
-                    <div class="modal-body">
-                        
-                        <div class="mb-3 row">
-                            <label for="type" class="col-sm-3 col-form-label fw-semi-bold">Outlet Type</label>
-                            <div class="col-sm-9">
-                                {!! Form::select('type', $types, '', ['class' => 'form-control'])!!}
-                            </div>
-                        </div>
-
-                      
-                        <div class="mb-3 row">
-                            <label for="channel" class="col-sm-3 col-form-label fw-semi-bold">Outlet Channel</label>
-                            <div class="col-sm-9">
-                                {!! Form::select('channel', $channels, '', ['class' => 'form-control'])!!}
-                            </div>
-                        </div>
-
-                        <div class="mb-3 row">
-                            <label for="outlet_name" class="col-sm-3 col-form-label fw-semi-bold">Outlet Name</label>
-                            <div class="col-sm-9">
-                                <input class="form-control" type="text" name="outlet_name" id="outlet_name">
-                            </div>
-                        </div>
-
-                        <div class="mb-3 row">
-                            <label for="outlet_address" class="col-sm-3 col-form-label fw-semi-bold">Outlet Address</label>
-                            <div class="col-sm-9">
-                                <input class="form-control" type="text" name="outlet_address" id="outlet_address">
-                            </div>
-                        </div>
-
-                        <div class="mb-3 row">
-                            <label for="outlet_phone" class="col-sm-3 col-form-label fw-semi-bold">Outlet Phone</label>
-                            <div class="col-sm-9">
-                                <input class="form-control" type="text" name="outlet_phone" id="outlet_phone">
-                            </div>
-                        </div>
-
-                        <div class="mb-3 row">
-                            <label for="outlet_image" class="col-sm-3 col-form-label fw-semi-bold">Outlet image</label>
-                            <div class="col-sm-9">
-                                <input class="form-control" type="file" name="outlet_image" id="outlet_image">
-                                <input class="form-control" type="hidden" name="old_image" id="old_image">
-                                <input class="form-control" type="hidden" name="id" id="id">
-                            </div>
-                        </div>
-                        
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-success modal_action actionBtn"></button>
-                    </div>
-
+                    <p class="fs-15 fw-bold mt-3">Total Outlet</p>
+                    <h3 class="card-title fs-18 fw-bold">2</h3>
                 </div>
-
-            </form>
+                <div class="card-footer p-3">
+                    <div class="stats">
+                        <a href="#" class="warning-link">Total Outlet</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+            <div class="card card-stats statistic-box mb-4">
+                <div class="card-header card-header-success card-header-icon position-relative border-0 text-end px-3 py-0">
+                    <div class="card-icon d-flex align-items-center justify-content-center">
+                        <i class="typcn typcn-home-outline"></i>
+                    </div>
+                    <p class="fs-15 fw-bold mt-3">Total outlet map to fieldstaff</p>
+                    <h3 class="card-title fs-21 fw-bold">5</h3>
+                </div>
+                <div class="card-footer p-3">
+                    <div class="stats">
+                        <a href="#" class="warning-link">Total outlet map to fieldstaff</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+            <div class="card card-stats statistic-box mb-4">
+                <div class="card-header card-header-danger card-header-icon position-relative border-0 text-end px-3 py-0">
+                    <div class="card-icon d-flex align-items-center justify-content-center">
+                        <i class="typcn typcn-info-outline"></i>
+                    </div>
+                    <p class="fs-15 fw-bold mt-3">Total outlet map to client</p>
+                    <h3 class="card-title fs-21 fw-bold">75</h3>
+                </div>
+                <div class="card-footer p-3">
+                    <div class="stats">
+                        <a href="#" class="warning-link">Total outlet map to client</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+            <div class="card card-stats statistic-box mb-4">
+                <div class="card-header card-header-info card-header-icon position-relative border-0 text-end px-3 py-0">
+                    <div class="card-icon d-flex align-items-center justify-content-center">
+                        <i class="fab fa-twitter"></i>
+                    </div>
+                    <p class="fs-15 fw-bold mt-3 mb-1">Click to custom export</p>
+                    <i class="typcn typcn-arrow-down-thick fs-26"></i>
+                </div>
+                <div class="card-footer p-3">
+                    <div class="stats">
+                        <a href="#" class="warning-link">Click to custom export</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
+    <div class="row mb-4">
+        <div class="col-md-6 col-lg-4 mb-3">
+            <div class="card">
+                <div class="card-header gradient-1 p-3">
+                    <h1 class="fs-24 text-white">Outlet Type Classification</h1>
+                </div>
+                <div class="card-body py-5">
+                    <div class="fs-15 fw-bold">
+                        2 Wholesaler
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4 mb-3">
+            <div class="card">
+                <div class="card-header gradient-2 p-3">
+                    <h1 class="fs-24 text-white"> Most Covered LGAs</h1>
+                </div>
+                <div class="card-body py-5">
+                    <div class="fs-15 fw-bold">
+                        1 Aba North
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4 mb-3">
+            <div class="card">
+                <div class="card-header gradient-3 p-3">
+                    <h1 class="fs-24 text-white">Least Covered LGAs</h1>
+                </div>
+                <div class="card-body py-5">
+                    <div class="fs-15 fw-bold">
+                        1 Aba North
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col-lg-6 d-flex">
+            <div class="card mb-4 flex-fill w-100">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="fs-17 fw-semi-bold mb-0">Variable Radius Pie Chart</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div id="chartdiv" style="width: 100%;
+                    height: 400px;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 d-flex">
+            <div class="card mb-4 flex-fill w-100">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="fs-17 fw-semi-bold mb-0">Variable Radius Pie Chart</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div id="chartdiv1" style="width: 100%;
+                    height: 400px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="fs-17 fw-semi-bold mb-0">Outlet By Region</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="example" class="table display table-bordered table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Region Name</th>
+                                    <th>Outlet</th>
+                                    <th>Wholesaler</th>
+                                    <th>Neighbourhood</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Tiger Nixon</td>
+                                    <td>System Architect</td>
+                                    <td>Edinburgh</td>
+                                    <td>61</td>
+                                </tr>
+                                <tr>
+                                    <td>Garrett Winters</td>
+                                    <td>Accountant</td>
+                                    <td>Tokyo</td>
+                                    <td>63</td>
+                                </tr>
+                                <tr>
+                                    <td>Ashton Cox</td>
+                                    <td>Junior Technical Author</td>
+                                    <td>San Francisco</td>
+                                    <td>66</td>
+                                </tr>
+                                <tr>
+                                    <td>Cedric Kelly</td>
+                                    <td>Senior Javascript Developer</td>
+                                    <td>Edinburgh</td>
+                                    <td>22</td>
+                                </tr>
+                                <tr>
+                                    <td>Airi Satou</td>
+                                    <td>Accountant</td>
+                                    <td>Tokyo</td>
+                                    <td>33</td>
+                                </tr>
+                                <tr>
+                                    <td>Brielle Williamson</td>
+                                    <td>Integration Specialist</td>
+                                    <td>New York</td>
+                                    <td>61</td>
+                                </tr>
+                                <tr>
+                                    <td>Herrod Chandler</td>
+                                    <td>Sales Assistant</td>
+                                    <td>San Francisco</td>
+                                    <td>59</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Jonas Alexander</td>
+                                    <td>Developer</td>
+                                    <td>San Francisco</td>
+                                    <td>30</td>
+                                </tr>
+                                <tr>
+                                    <td>Shad Decker</td>
+                                    <td>Regional Director</td>
+                                    <td>Edinburgh</td>
+                                    <td>51</td>
+                                </tr>
+                                <tr>
+                                    <td>Michael Bruce</td>
+                                    <td>Javascript Developer</td>
+                                    <td>Singapore</td>
+                                    <td>29</td>
+                                </tr>
+                                <tr>
+                                    <td>Donna Snider</td>
+                                    <td>Customer Support</td>
+                                    <td>New York</td>
+                                    <td>27</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-lg-12 d-flex">
+            <div class="card mb-4 flex-fill w-100">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="fs-17 fw-semi-bold mb-0">Performance by Outlet Sales last 2 weeks</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div id="chartdiv2" style="width: 100%;
+                    height: 400px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
+@endsection
 
-    <script type="text/javascript">
-        // delete items
-      
-        var showCallBackData = function() {
-            $('#id').val('');
-            $('.ajaxForm')[0].reset();
-            $('#myModal').modal('hide');
-            //$('#outletList').DataTable().ajax.reload(null, false);
-            $("#outletList").load(" #outletList > *");
-        }
-      
-        $(document).ready(function() {
-            "use strict";
-      
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-    
-            
-            $('.addShowModal').on('click', function() {
-                $('.modal-title').text('Create Channel');
-                $('.actionBtn').text('Add');
-                $('.ajaxForm').removeClass('was-validated');
-                $('#myModal').modal('show');
-            });
-    
-    
-            $('#outletList').on('click', '#deleteAction', function(e) {
-                e.preventDefault();
-
-                $('#ajaxForm').removeClass('was-validated');
-                var submit_url = $(this).attr('data-route');
-                var check = confirm('Are you sure');
-                if (check == true) {
-                    $.ajax({
-                        type: 'POST',
-                        url: submit_url,
-                        data: {"_token": "{{ csrf_token() }}"},
-                        dataType: 'json',
-                        success: function(response) {
-                            if(response.success==true) {
-                                toastr.success(response.message, response.title);
-                            }else if(response.success=='exist'){
-                                toastr.warning(response.message, response.title);
-                            }else{
-                                toastr.error(response.message, response.title);
-                            }
-                            $("#outletList").load(" #outletList > *");
-                        },
-                        error: function() {
-                        }
-                    });
-                }
-            });
-      
-      
-      
-            $('#outletList').on('click', '#editAction', function(e) {
-                e.preventDefault();
-                var submit_url = $(this).attr('data-route');
-                // alert(submit_url);
-                //var check = confirm('are_you_sure');
-                var action_url = "{{route('update_outlet')}}";
-                $.ajax({
-                    type: 'GET',
-                    url: submit_url,
-                    data: {"_token": "{{ csrf_token() }}"},
-                    dataType: 'JSON',
-                    success: function(res) {
-
-                        $('#type_name').val(res.data.type_id).trigger('change');
-                        $('#channel_name').val(res.data.channel_id).trigger('change');
-    
-                        $('#outlet_name').val(res.data.outlet_name);
-                        $('#outlet_address').val(res.data.outlet_address);
-                        $('#outlet_phone').val(res.data.outlet_phone);
-                        $('#old_image').val(res.data.outlet_image);
-                        $('#id').val(res.data.id);
-    
-                        $("#ajaxForm").attr("action", action_url);
-                        $('.modal-title').text('Update Information');
-                        $('.actionBtn').text('Update');
-                        $('#myModal').modal('show');
-                        //alert(res.data.id);
-                    },
-                    error: function() {
-                    }
-                });
-            });
-      
-        });
-      
-      
-      </script>
-
-
-
-
-    @endsection
-
-    @push('js')
-    @endpush
+@push('js')
+@endpush

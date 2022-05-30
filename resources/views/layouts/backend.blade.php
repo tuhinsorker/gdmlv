@@ -45,38 +45,9 @@
             <div class="content-wrapper">
                 <div class="main-content">
 
-
                     <!--Navbar-->
                     @include('includs.topmenu');
                     <!--/.navbar-->
-
-                    
-                    <!--Content Header (Page header)-->
-                    <div class="content-header">
-                        <div class="page-header m-0">
-                            <h4 class="page-title">Blank Page</h4>
-                            <ul class="breadcrumbs">
-                                <li class="nav-home">
-                                    <a href="#">
-                                        <i class="typcn typcn-home-outline"></i>
-                                    </a>
-                                </li>
-                                <li class="separator">
-                                    <i class="ti-angle-right"></i>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#">Base</a>
-                                </li>
-                                <li class="separator">
-                                    <i class="ti-angle-right"></i>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#">Blank Page</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
 
                     <!--/.Content Header (Page header)--> 
                     @yield('content')

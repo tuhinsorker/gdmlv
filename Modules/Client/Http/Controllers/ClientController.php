@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Validator;
 use  Modules\Client\Entities\Client;
 use App\Models\User;
 
+
 class ClientController extends Controller
 {
 

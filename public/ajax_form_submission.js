@@ -45,7 +45,7 @@ function ajaxSubmit(e, form) {
             //console.log(response);
             $('.actionBtn').prop('disabled', false);
             if(response.success==true) {
-                //alert(response.message);
+                //alert(response.title);
                 toastr.success(response.message, response.title);
                 if (typeof CallBackFunction == 'function') {
                     if(response.hasOwnProperty('data')){
@@ -110,15 +110,12 @@ function dobValidator(id, min, max) {
     return dobErrMsg; // Return the date instead of an undefined variable
 }
 
-
-
-toastr.options = {
-    "closeButton": false,
-    "debug": false,
-    "newestOnTop": true,
+  toastr.options = {
+    "closeButton": true,
+    "newestOnTop": false,
     "progressBar": true,
     "positionClass": "toast-top-right",
-    "preventDuplicates": true,
+    "preventDuplicates": false,
     "onclick": null,
     "showDuration": "300",
     "hideDuration": "1000",

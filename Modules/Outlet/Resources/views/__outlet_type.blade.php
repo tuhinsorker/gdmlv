@@ -74,20 +74,20 @@
                     <div class="modal-body">
                         
                         <div class="mb-3">
-                            <label for="type_name" class="col-form-label">Type Name:</label>
-                            <input type="text" name="type_name" id="type_name" class="form-control" id="type_name">
+                            <label for="type_name" class="col-form-label">Type Name: <span class="text-danger">*</span></label>
+                            <input type="text" name="type_name" id="type_name" class="form-control" required id="type_name">
                         </div>
                         <input type="hidden" name="id" id="id">
 
                         <div class="mb-3">
-                            <label for="type_description" class="col-form-label">Type Name:</label>
+                            <label for="type_description" class="col-form-label">Type Description:</label>
                             <textarea name="type_description" id="type_description" class="form-control" id="type_description"></textarea>
                         </div>
                         
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-success modal_action actionBtn"></button>
                     </div>
 
@@ -123,6 +123,13 @@
 
         
         $('.addShowModal').on('click', function() {
+
+            $('#type_name').val('');
+            $('#type_description').val('');
+            $('#id').val('');
+
+            $('.modal-title').text('Add Outlet Type');
+
             $('.actionBtn').text('Add');
             $('.ajaxForm').removeClass('was-validated');
             $('#myModal').modal('show');

@@ -1,0 +1,59 @@
+.gradient-1 {
+    background: #1f4037;
+    background: -webkit-linear-gradient(to right, #99f2c8, #1f4037);
+    background: linear-gradient(to right, #99f2c8, #1f4037);
+}
+
+.gradient-2 {
+    background: #8360c3;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2ebf91, #8360c3);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2ebf91, #8360c3);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.gradient-3 {
+    background: #7F7FD5;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.px-10 {
+    padding-right: 10rem!important;
+    padding-left: 10rem!important;
+}
+
+@media (max-width:991px) {
+    .px-10 {
+        padding-right: 1rem!important;
+        padding-left: 1rem!important;
+    }
+}
+
+.h-24 {
+    height: 24px;
+}
+
+.filter-bt {
+    background: white;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    border: 2px solid #1b944c;
+}
+
+.filter-bt:focus {
+    outline: 2px solid #1b944c!important;
+    border: 0px;
+    margin-right: 3px;
+}
+
+.sidebar-logo {
+    width: 13.4rem;
+    height: 3.5rem;
+}

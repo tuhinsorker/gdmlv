@@ -85,11 +85,10 @@
                         <label for="channel_description" class="col-form-label">Channel Name:</label>
                         <textarea name="channel_description" id="channel_description" class="form-control" id="channel_description"></textarea>
                     </div>
-                    
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-success modal_action actionBtn"></button>
                 </div>
 

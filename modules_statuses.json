@@ -3,5 +3,8 @@
     "Setting": true,
     "Client": true,
     "Users": true,
-    "Product": true
+    "Product": true,
+    "Role": true,
+    "User": true,
+    "Location": true
 }

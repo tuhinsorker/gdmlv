@@ -162,8 +162,8 @@ Licensed under the MIT license.
                         fill: false,
                         fillColor: null,
                         steps: false
-                        // Omit 'zero', so we can later default its value to
-                        // match that of the 'fill' option.
+                            // Omit 'zero', so we can later default its value to
+                            // match that of the 'fill' option.
                     },
                     bars: {
                         show: false,
@@ -337,7 +337,7 @@ Licensed under the MIT license.
             executeHooks(hooks.resize, [width, height]);
         };
 
-        plot.clearTextCache = function () {
+        plot.clearTextCache = function() {
             surface.clearCache();
             overlay.clearCache();
         };
@@ -497,7 +497,7 @@ Licensed under the MIT license.
 
             //process boxPosition options used for axis.box size
             $.each(allAxes(), function(_, axis) {
-                axis.boxPosition = axis.options.boxPosition || {centerX: 0, centerY: 0};
+                axis.boxPosition = axis.options.boxPosition || { centerX: 0, centerY: 0 };
             });
 
             // add hooks from options
@@ -910,7 +910,7 @@ Licensed under the MIT license.
                 s = series[i];
                 format = s.datapoints.format;
 
-                if (format.every(function (f) { return !f.computeRange; })) {
+                if (format.every(function(f) { return !f.computeRange; })) {
                     continue;
                 }
 
@@ -977,7 +977,7 @@ Licensed under the MIT license.
             var key = eventHolder + event;
             var eventList = eventManager[key] || [];
 
-            eventList.push({"event": event, "handler": handler, "eventHolder": eventHolder, "priority": priority});
+            eventList.push({ "event": event, "handler": handler, "eventHolder": eventHolder, "priority": priority });
             eventList.sort((a, b) => b.priority - a.priority);
             eventList.forEach(eventData => {
                 eventData.eventHolder.unbind(eventData.event, eventData.handler);
@@ -1267,7 +1267,7 @@ Licensed under the MIT license.
                 offset[a] = margins[a] - plotOffset[a];
             }
             $.each(xaxes.concat(yaxes), function(_, axis) {
-                alignAxisWithGrid(axis, offset, function (offset) {
+                alignAxisWithGrid(axis, offset, function(offset) {
                     return offset > 0;
                 });
             });
@@ -1310,7 +1310,7 @@ Licensed under the MIT license.
 
             // If the grid is visible, add its border width to the offset
             for (a in plotOffset) {
-                if (typeof (options.grid.borderWidth) === "object") {
+                if (typeof(options.grid.borderWidth) === "object") {
                     plotOffset[a] += showGrid ? options.grid.borderWidth[a] : 0;
                 } else {
                     plotOffset[a] += showGrid ? options.grid.borderWidth : 0;
@@ -1506,7 +1506,7 @@ Licensed under the MIT license.
             axis.max = $.plot.saturated.saturate(max);
         }
 
-        function computeValuePrecision (min, max, direction, ticks, tickDecimals) {
+        function computeValuePrecision(min, max, direction, ticks, tickDecimals) {
             var noTicks = fixupNumberOfTicks(direction, surface, ticks);
 
             var delta = $.plot.saturated.delta(min, max, noTicks),
@@ -1528,7 +1528,7 @@ Licensed under the MIT license.
             return isFinite(dec) ? dec : 0;
         };
 
-        function computeTickSize (min, max, noTicks, tickDecimals) {
+        function computeTickSize(min, max, noTicks, tickDecimals) {
             var delta = $.plot.saturated.delta(min, max, noTicks),
                 dec = -Math.floor(Math.log(delta) / Math.LN10);
 
@@ -1564,8 +1564,8 @@ Licensed under the MIT license.
             if (typeof options.ticks === "number" && options.ticks > 0) {
                 noTicks = options.ticks;
             } else {
-            // heuristic based on the model a*sqrt(x) fitted to
-            // some data points that seemed reasonable
+                // heuristic based on the model a*sqrt(x) fitted to
+                // some data points that seemed reasonable
                 noTicks = 0.3 * Math.sqrt(direction === "x" ? surface.width : surface.height);
             }
 
@@ -1678,7 +1678,7 @@ Licensed under the MIT license.
                 ticks = axis.tickGenerator(axis, plot);
             } else if (oticks) {
                 if ($.isFunction(oticks)) {
-                // generate the ticks
+                    // generate the ticks
                     ticks = oticks(axis);
                 } else {
                     ticks = oticks;
@@ -2093,7 +2093,7 @@ Licensed under the MIT license.
 
         function drawGridLines(axis) {
             // check if the line will be overlapped with a border
-            var overlappedWithBorder = function (value) {
+            var overlappedWithBorder = function(value) {
                 var bw = options.grid.borderWidth;
                 return (((typeof bw === "object" && bw[axis.position] > 0) || bw > 0) && (value === axis.min || value === axis.max));
             };
@@ -2246,10 +2246,11 @@ Licensed under the MIT license.
                     font = axis.options.font || "flot-tick-label tickLabel",
                     i, x, y, halign, valign, info,
                     margin = 3,
-                    nullBox = {x: NaN, y: NaN, width: NaN, height: NaN}, newLabelBox, labelBoxes = [],
+                    nullBox = { x: NaN, y: NaN, width: NaN, height: NaN },
+                    newLabelBox, labelBoxes = [],
                     overlapping = function(x11, y11, x12, y12, x21, y21, x22, y22) {
                         return ((x11 <= x21 && x21 <= x12) || (x21 <= x11 && x11 <= x22)) &&
-                               ((y11 <= y21 && y21 <= y12) || (y21 <= y11 && y11 <= y22));
+                            ((y11 <= y21 && y21 <= y12) || (y21 <= y11 && y11 <= y22));
                     },
                     overlapsOtherLabels = function(newLabelBox, previousLabelBoxes) {
                         return previousLabelBoxes.some(function(labelBox) {
@@ -2258,7 +2259,7 @@ Licensed under the MIT license.
                                 labelBox.x, labelBox.y, labelBox.x + labelBox.width, labelBox.y + labelBox.height);
                         });
                     },
-                    drawAxisLabel = function (tick, labelBoxes) {
+                    drawAxisLabel = function(tick, labelBoxes) {
                         if (!tick || !tick.label || tick.v < axis.min || tick.v > axis.max) {
                             return nullBox;
                         }
@@ -2274,7 +2275,7 @@ Licensed under the MIT license.
                                 y = box.top + box.height - box.padding + axis.boxPosition.centerY;
                                 valign = "bottom";
                             }
-                            newLabelBox = {x: x - info.width / 2 - margin, y: y - margin, width: info.width + 2 * margin, height: info.height + 2 * margin};
+                            newLabelBox = { x: x - info.width / 2 - margin, y: y - margin, width: info.width + 2 * margin, height: info.height + 2 * margin };
                         } else {
                             valign = "middle";
                             y = plotOffset.top + axis.p2c(tick.v);
@@ -2284,7 +2285,7 @@ Licensed under the MIT license.
                             } else {
                                 x = box.left + box.padding + axis.boxPosition.centerX;
                             }
-                            newLabelBox = {x: x - info.width / 2 - margin, y: y - margin, width: info.width + 2 * margin, height: info.height + 2 * margin};
+                            newLabelBox = { x: x - info.width / 2 - margin, y: y - margin, width: info.width + 2 * margin, height: info.height + 2 * margin };
                         }
 
                         if (overlapsOtherLabels(newLabelBox, labelBoxes)) {
@@ -2365,7 +2366,7 @@ Licensed under the MIT license.
                     continue;
                 }
 
-                if (typeof (isValid) === 'function' && !isValid(points[j])) {
+                if (typeof(isValid) === 'function' && !isValid(points[j])) {
                     continue;
                 }
 
@@ -2376,7 +2377,7 @@ Licensed under the MIT license.
                         continue;
                     }
 
-                    if (typeof (isValid) === 'function' && !isValid(val)) {
+                    if (typeof(isValid) === 'function' && !isValid(val)) {
                         continue;
                     }
 
@@ -2457,7 +2458,8 @@ Licensed under the MIT license.
 
         function computeBarWidth(series) {
             var xValues = [];
-            var pointsize = series.datapoints.pointsize, minDistance = Number.MAX_VALUE;
+            var pointsize = series.datapoints.pointsize,
+                minDistance = Number.MAX_VALUE;
 
             if (series.datapoints.points.length <= pointsize) {
                 minDistance = 1;
@@ -2562,7 +2564,7 @@ Licensed under the MIT license.
             return foundItems;
         }
 
-        function findNearbyPoint (series, mouseX, mouseY, maxDistance, computeDistance) {
+        function findNearbyPoint(series, mouseX, mouseY, maxDistance, computeDistance) {
             var mx = series.xaxis.c2p(mouseX),
                 my = series.yaxis.c2p(mouseY),
                 maxx = maxDistance / series.xaxis.scale,
@@ -2611,7 +2613,7 @@ Licensed under the MIT license.
             return found;
         }
 
-        function findNearbyBar (series, mouseX, mouseY) {
+        function findNearbyBar(series, mouseX, mouseY) {
             var barLeft, barRight,
                 barWidth = series.bars.barWidth[0] || series.bars.barWidth,
                 mx = series.xaxis.c2p(mouseX),
@@ -2637,17 +2639,18 @@ Licensed under the MIT license.
 
             var foundIndex = -1;
             for (var j = 0; j < points.length; j += ps) {
-                var x = points[j], y = points[j + 1];
+                var x = points[j],
+                    y = points[j + 1];
                 if (x == null) {
                     continue;
                 }
 
                 var bottom = ps === 3 ? points[j + 2] : defaultBottom;
                 // for a bar graph, the cursor must be inside the bar
-                if (series.bars.horizontal
-                    ? (mx <= Math.max(bottom, x) && mx >= Math.min(bottom, x) &&
-                        my >= y + barLeft && my <= y + barRight)
-                    : (mx >= x + barLeft && mx <= x + barRight &&
+                if (series.bars.horizontal ?
+                    (mx <= Math.max(bottom, x) && mx >= Math.min(bottom, x) &&
+                        my >= y + barLeft && my <= y + barRight) :
+                    (mx >= x + barLeft && mx <= x + barRight &&
                         my >= Math.min(bottom, y) && my <= Math.max(bottom, y))) {
                     foundIndex = j / ps;
                 }
@@ -2669,9 +2672,10 @@ Licensed under the MIT license.
                 ps = series[i].datapoints.pointsize;
 
                 // if the data is coming from positive -> negative, reverse the comparison
-                const comparer = points[points.length - ps] < points[0]
-                    ? function (x1, x2) { return x1 > x2 }
-                    : function (x1, x2) { return x2 > x1 };
+                const comparer = points[points.length - ps] < points[0] ?
+
+                    function(x1, x2) { return x1 > x2 } :
+                    function(x1, x2) { return x2 > x1 };
 
                 // do not interpolate outside the bounds of the data.
                 if (comparer(posX, points[0])) {

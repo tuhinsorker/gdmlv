@@ -14,7 +14,10 @@
         "laravel/ui": "^3.4",
         "laravelcollective/html": "^6.3",
         "nwidart/laravel-modules": "^8.3",
-        "tymon/jwt-auth": "^1.0"
+        "tomfordrumm/jwt-auth": "dev-develop",
+        "tymon/jwt-auth": "^1.0",
+        "yajra/laravel-datatables": "1.5",
+        "yajra/laravel-datatables-oracle": "~9.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

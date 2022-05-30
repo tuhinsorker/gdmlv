@@ -3,8 +3,8 @@
 @endpush
 
 @section('content')
-     <!--/.Content Header (Page header)--> 
-     <div class="body-content">
+    <!--/.Content Header (Page header)--> 
+    <div class="body-content">
         <div class="row">
 
             <div class="col-lg-12">
@@ -132,18 +132,17 @@
                             <div class="col-sm-9">
                                 <div class="radio">
                                     <input type="radio" name="radio1" id="radio1" value="option1" checked="">
-                                    <label for="radio1">Small</label>
+                                    <label for="radio1">Active</label>
                                 </div>
                                 <div class="radio">
                                     <input type="radio" name="radio1" id="radio2" value="option2">
-                                    <label for="radio2">Big</label>
+                                    <label for="radio2">InActive</label>
                                 </div>
                             </div>
                         </div>
-
-                       
-                        
                     </div>
+
+
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

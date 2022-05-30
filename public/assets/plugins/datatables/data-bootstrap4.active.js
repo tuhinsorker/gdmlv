@@ -1,20 +1,20 @@
-(function ($) {
+(function($) {
     "use strict";
     var tableBootstrap4Style = {
-        initialize: function () {
+        initialize: function() {
             this.bootstrap4Styling();
             this.bootstrap4Modal();
             this.print();
         },
-        bootstrap4Styling: function () {
+        bootstrap4Styling: function() {
             $('.bootstrap4-styling').DataTable();
         },
-        bootstrap4Modal: function () {
+        bootstrap4Modal: function() {
             $('.bootstrap4-modal').DataTable({
                 responsive: {
                     details: {
                         display: $.fn.dataTable.Responsive.display.modal({
-                            header: function (row) {
+                            header: function(row) {
                                 var data = row.data();
                                 return 'Details for ' + data[0] + ' ' + data[1];
                             }
@@ -26,11 +26,10 @@
                 }
             });
         },
-        print: function () {
+        print: function() {
             var table = $('#example').DataTable({
                 lengthChange: false,
-                buttons: [
-                    {
+                buttons: [{
                         extend: 'copy',
                         className: 'btn-success'
                     },
@@ -51,12 +50,12 @@
             });
 
             table.buttons().container()
-                    .appendTo('#example_wrapper .col-md-6:eq(0)');
+                .appendTo('#example_wrapper .col-md-6:eq(0)');
         }
 
     };
     // Initialize
-    $(document).ready(function () {
+    $(document).ready(function() {
         "use strict"; // Start of use strict
         tableBootstrap4Style.initialize();
     });

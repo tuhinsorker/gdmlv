@@ -16,4 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('setting')->group(function() {
     Route::get('/app_setting', 'SettingController@index')->name('app_setting');
     Route::post('/appinfo_update', 'SettingController@update')->name('appinfo_update');
+
+
+    Route::get('lang','LanguageController@index')->name('lang.index');
+    Route::post('lang-store','LanguageController@store')->name('lang.store');
+    Route::get('lang-edit/{slug}','LanguageController@edit')->name('lang.edit');
+    Route::post('lang-update/{slug}','LanguageController@update')->name('lang.update');
 });

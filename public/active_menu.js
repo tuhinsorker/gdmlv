@@ -24,5 +24,18 @@ $(document).ready(function () {
         $('.setting-mm').addClass('mm-show');
     }
 
-
 });
+
+$('.mySelect2First').select2({
+    placeholder: "Select a state",
+    allowClear: true
+});
+$('.mySelect2Modal').select2({
+    dropdownParent: $('#myModal'),
+    placeholder: "Select a state",
+    allowClear: true
+});
+
+
+
+

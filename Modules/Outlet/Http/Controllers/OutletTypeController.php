@@ -43,7 +43,7 @@ class OutletTypeController extends Controller
     {
 
         $request->validate([
-            'type_name' => 'required'
+            'type_name' => 'required|unique:outlet_types'
         ]);
         
         $data['type_name']    = $request->type_name;

@@ -15,13 +15,21 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('outlet')->middleware('auth')->group(function() {
 
-    Route::get('/', 'OutletController@index');
+    Route::get('/', 'OutletDashboardController@index');
+
+    Route::get('/outlt_list', 'OutletController@index');
     Route::get('/create', 'OutletController@create')->name('create');
     Route::post('/store', 'OutletController@store')->name('store');
 
     Route::get('/outlet_edit/{id}', 'OutletController@edit')->name('outlet_edit');
     Route::post('/update_outlet', 'OutletController@update')->name('update_outlet');
     Route::post('/delete_outlet/{id}', 'OutletController@destroy')->name('delete_outlet');
+
+
+    Route::get('/outletListAjax', 'OutletController@get_ajaxdata')->name('outletListAjax');
+
+
+
 
     Route::get('/type', 'OutletTypeController@index');
     Route::get('/create_type', 'OutletTypeController@index');
