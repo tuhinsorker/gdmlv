@@ -22,10 +22,9 @@ class OutletController extends Controller
     {
 
         $channels = OutletChannel::pluck('channel_name','id');
-        $channels->prepend('Please Select Channel');
-
+        $channels->prepend('Please Select');
         $OutletType = OutletType::pluck('type_name','id');
-        $OutletType->prepend('Please Select Type');
+        $OutletType->prepend('Please Select');
 
         return view('outlet::__outletlist',[
             'channels'=>$channels,
@@ -73,7 +72,6 @@ class OutletController extends Controller
         $data['type_id']    = $request->type;
         $data['channel_id']    = $request->channel;
         $data['outlet_name'] = $request->outlet_name;
-        $data['outlet_address'] = $request->outlet_address;
         $data['outlet_phone'] = $request->outlet_phone;
 
 
@@ -174,6 +172,7 @@ class OutletController extends Controller
             $sql = Outlet::select("outlets.*","outlet_types.type_name","outlet_channels.channel_name");
             $sql->join("outlet_types","outlet_types.id","=","outlets.type_id");
             $sql->join("outlet_channels","outlet_channels.id","=","outlets.channel_id");
+            
 
             if(!empty($outlet_type)){
                 $sql->where('type_id', $outlet_type);
@@ -187,7 +186,7 @@ class OutletController extends Controller
             return DataTables::of($data)->addIndexColumn()
 
                     ->addColumn('image', function ($data) {
-                        $imag = url('/images/'.$data->outlet_image);
+                        $imag = url('/public/images/'.$data->outlet_image);
                         $image = '<img src="'.$imag.'" width="50">';
                         return $image;
                     })
@@ -204,12 +203,12 @@ class OutletController extends Controller
                         return $data->channel_name;
                     })
 
-                    ->addColumn('outlet_address', function ($data) {
-                        return $data->outlet_address;
-                    })
-
                     ->addColumn('outlet_phone', function ($data) {
                         return $data->outlet_phone;
+                    })
+
+                    ->addColumn('outlet_cp', function ($data) {
+                        return $data->cpt.' '.$data->cpl;
                     })
 
                     ->addColumn('action', function($data){

@@ -5686,13 +5686,19 @@ fieldset:disabled .btn {
 @media (min-width:992px) {
     .modal-lg,
     .modal-xl {
-        max-width: 800px
+        max-width: 1000px
     }
 }
 
 @media (min-width:1200px) {
     .modal-xl {
-        max-width: 1140px
+        max-width: 1200px
+    }
+}
+
+@media (min-width:1400px) {
+    .modal-xl {
+        max-width: 1400px
     }
 }
 

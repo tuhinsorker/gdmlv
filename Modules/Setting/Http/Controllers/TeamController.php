@@ -14,7 +14,7 @@ class TeamController extends Controller
      */
     public function index()
     {
-        return view('setting::index');
+        return view('setting::__team_list');
     }
 
     /**

@@ -9,7 +9,7 @@
         <meta name="author" content="Bdtask">
         <title>Bhulua - Bootstrap 4 Admin Template Deshboard</title>
         <!-- App favicon -->
-        <link rel="shortcut icon" href="assets/dist/img/favicon.png">
+        <link rel="shortcut icon" href="{{ (@appSetting()->favicon) ? asset('public/'.@appSetting()->favicon) : url('avatar.png')  }}">
 
         @include('includs.css')
         @stack('css')

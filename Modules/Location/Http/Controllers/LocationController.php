@@ -21,9 +21,10 @@ class LocationController extends Controller
     {
 
         return view('location::index',[
-            'country'   => Country::get(),
-            'state'     => State::get(),
-            'region'    => Region::get()
+            'countries'   => Country::get(),
+            'states'     => State::get(),
+            'regions'    => Region::get(),
+            'locations'    => Location::get()
         ]);
 
 

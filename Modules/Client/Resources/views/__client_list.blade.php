@@ -43,14 +43,14 @@
                                     <tr>
                                         <td>
                                             <div>
-                                                <img src="{{url('/images/'.$client->client_logo)}}" class="rounded-circle" width="50" alt="...">
+                                                <img src="{{url('/public/images/'.$client->client_logo)}}" class="rounded-circle" width="50" alt="...">
                                             </div>
                                         </td>
                                         <td>{{$client->client_name}}</td>
                                         <td>{{$client->client_email}}</td>
                                         <td>{{$client->client_phone}}</td>
                                         <td>{{$client->client_address}}</td>
-                                        <td>{{$client->is_active}}</td>
+                                        <td>{{($client->is_active?'Active':'inactive')}}</td>
 
                                         <td>
                                             <a href="javascript:void(0)" class="btn btn-success-soft btn-sm me-1" id="editAction" data-route="{{ route('client_edit',$client->id) }}"  ><i class="far fa-edit"></i></a>
@@ -88,48 +88,41 @@
                     </div>
 
                     <div class="modal-body">
-                        
-                        <div class="mb-3 row">
-                            <label for="client_name" class="col-sm-3 col-form-label fw-semi-bold">Client name</label>
-                            <div class="col-sm-9">
-                                <input class="form-control" type="text" name="client_name" id="client_name">
+
+                        <div class="row ">
+                            <div class="col-md-6">
+                                <label for="client_name" class="col-form-label fw-bold">Client name <i class="text-danger">*</i></label>
+                                <input type="text"  name="client_name" id="client_name" class="form-control"  required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="client_email" class="col-form-label fw-bold">Client Email<i class="text-danger">*</i></label>
+                                <input type="text"  name="client_email" id="client_email" class="form-control"  required>
                             </div>
                         </div>
 
-                        <div class="mb-3 row">
-                            <label for="client_email" class="col-sm-3 col-form-label fw-semi-bold">Client Email</label>
-                            <div class="col-sm-9">
-                                <input class="form-control" type="text" name="client_email" id="client_email">
+                        <div class="row ">
+                            <div class="col-md-6">
+                                <label for="client_name" class="col-form-label fw-bold">Client phone <i class="text-danger">*</i></label>
+                                <input class="form-control" type="text" name="client_phone" id="client_phone" required>
                             </div>
-                        </div>
 
-                        <div class="mb-3 row">
-                            <label for="client_phone" class="col-sm-3 col-form-label fw-semi-bold">Client phone</label>
-                            <div class="col-sm-9">
-                                <input class="form-control" type="text" name="client_phone" id="client_phone">
-                            </div>
-                        </div>
-
-                        <div class="mb-3 row">
-                            <label for="client_address" class="col-sm-3 col-form-label fw-semi-bold">Client Address</label>
-                            <div class="col-sm-9">
-                                <input class="form-control" type="text" name="client_address" id="client_address">
-                            </div>
-                        </div>
-
-
-                        <div class="mb-3 row">
-                            <label for="client_logo" class="col-sm-3 col-form-label fw-semi-bold">Client Logo</label>
-                            <div class="col-sm-9">
+                            <div class="col-md-6">
+                                <label for="client_email" class="col-form-label fw-bold">Client Logo<i class="text-danger">*</i></label>
                                 <input class="form-control" type="file" name="client_logo" >
                                 <input class="form-control" type="hidden" name="client_logo_image" id="client_logo">
                                 <input class="form-control" type="hidden" name="id" id="id">
                             </div>
                         </div>
 
-                        <div class="mb-3 row">
-                            <label for="status" class="col-sm-3 col-form-label">Status <span class="text-danger">*</span></label>
-                            <div class="col-sm-9">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="client_address" class="col-form-label fw-semi-bold">Client Address <span class="text-danger">*</span></label>
+                                <textarea class="form-control" name="client_address" id="client_address" required ></textarea>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="status" class="col-form-label fw-bold">Status <span class="text-danger">*</span></label>
                                 <div class="radio">
                                     <input type="radio" name="radio1" id="radio1" value="option1" checked="">
                                     <label for="radio1">Active</label>
@@ -139,13 +132,15 @@
                                     <label for="radio2">InActive</label>
                                 </div>
                             </div>
+
                         </div>
+                       
                     </div>
 
 
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-success modal_action actionBtn"></button>
                     </div>
 

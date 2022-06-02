@@ -20,6 +20,10 @@ class UserController extends Controller
      */
     public function index()
     {
+
+        // $module = Module::find('blog');
+
+
         $users = Employee::get();
         return view('user::__user_list',[
             'ptitle'=>'User List',

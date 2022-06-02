@@ -28,11 +28,13 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" id="pills-location-tab" data-bs-toggle="pill" href="#pills-location" role="tab" aria-controls="pills-location" aria-selected="false">Location setup</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" id="pills-region-tab" data-bs-toggle="pill" href="#pills-region" role="tab" aria-controls="pills-region" aria-selected="false">Region Setup</a>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" id="pills-location-tab" data-bs-toggle="pill" href="#pills-location" role="tab" aria-controls="pills-location" aria-selected="false">Location setup</a>
+                        </li>
+                        
                     </ul>
 
 
@@ -48,6 +50,7 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="card-body">
 
                                             <form action="{{route('store-country')}}" method="POST" enctype="multipart/form-data" class="ajaxForm needs-validation" id="ajaxForm" novalidate="" data="showCallBackData" accept-charset="UTF-8">
@@ -70,10 +73,25 @@
                                                     </div>
                                                 </div>
                                             </form>
-
                                         </div>
+
+                                        <div class="card-body">
+                                            <div class="mb-3">
+                                                <label class="fw-semi-bold mb-2">Upload CSV File</label>
+                                                <div class="input-group mb-3">
+                                                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 justify-content-end me-1">
+                                                <button type="button" class="btn btn-danger w-auto me-2">Dawonload Demo File</button>
+                                                <button type="button" class="btn btn-success w-auto">Save</button>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
+
+
                                 <div class="col-12 col-lg-6">
                                     <div class="card mb-4 shadow">
                                         <div class="card-header">
@@ -85,30 +103,28 @@
                                         </div>
                                         <div class="card-body">
                                             <div class="table-responsive">
-                                                <table class="table display table-bordered table-striped table-hover basic">
+                                                <table class="table table-striped table-bordered dt-responsive nowrap bootstrap4">
                                                     <thead>
                                                         <tr>
-                                                            <th>Name</th>
-                                                            <th>Position</th>
-                                                            <th>Office</th>
+                                                            <th>SL.</th>
+                                                            <th>Country Name</th>
+                                                            <th>Action</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                        @php
+                                                            $i=1;
+                                                        @endphp
+                                                        @foreach ($countries as $item)
                                                         <tr>
-                                                            <td>Tiger Nixon</td>
-                                                            <td>System Architect</td>
-                                                            <td>Edinburgh</td>
+                                                            <td>{{$i++}}</td>
+                                                            <td>{{$item->country_name}}</td>
+                                                            <td>
+                                                                <a href="javascript:void(0)" class="btn btn-success-soft btn-sm me-1"><i class="far fa-edit"></i></a>
+                                                                <a href="javascript:void(0)" class="btn btn-danger-soft btn-sm"><i class="far fa-trash-alt"></i></a>
+                                                            </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td>Garrett Winters</td>
-                                                            <td>Accountant</td>
-                                                            <td>Tokyo</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Ashton Cox</td>
-                                                            <td>Junior Technical Author</td>
-                                                            <td>San Francisco</td>
-                                                        </tr>
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -131,36 +147,44 @@
                                             </div>
                                         </div>
                                         <div class="card-body">
+
                                             <div class="mb-3">
                                                 <label class="col-form-label text-end fw-semi-bold">Country Name</label>
                                                 <div class="col-12">
-                                                    <select class="form-control placeholder-single">                                       
-                                                        <optgroup label="Central Time Zone">
-                                                            <option value="AL">Alabama</option>
-                                                            <option value="AR">Arkansas</option>
-                                                            <option value="IL">Illinois</option>
-                                                            <option value="IA">Iowa</option>
-                                                            <option value="KS">Kansas</option>
-                                                            <option value="KY">Kentucky</option>
-                                                            <option value="LA">Louisiana</option>
-                                                            <option value="MN">Minnesota</option>
-                                                            <option value="MS">Mississippi</option>
-                                                            <option value="MO">Missouri</option>
-                                                            <option value="OK">Oklahoma</option>
-                                                            <option value="SD">South Dakota</option>
-                                                            <option value="TX">Texas</option>
-                                                            <option value="TN">Tennessee</option>
-                                                            <option value="WI">Wisconsin</option>
-                                                        </optgroup>                                              
+                                                    <select class="form-control placeholder-single" name="country_id">  
+                                                        @foreach ($countries as $item)       
+                                                            <option value="{{$item->id}}">{{$item->country_name}}</option>
+                                                        @endforeach                 
                                                     </select>
                                                 </div>
                                             </div>
+
                                             <div class="mb-3">
                                                 <label class="fw-semi-bold">State *</label>
                                                 <div class="input-group mb-3">
-                                                    <input type="text" class="form-control" placeholder="Country Name" aria-label="Recipient's username">
+                                                    <input type="text" class="form-control" placeholder="State Name" name="state_name" >
                                                 </div>
                                             </div>
+
+                                            <div class="mb-3 justify-content-end me-1">
+                                                <button type="button" class="btn btn-success w-auto">Save</button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="card mb-4 shadow">
+                                        <div class="card-header">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <h6 class="fs-17 fw-semi-bold mb-0">Bulk Upload</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+
+                                        <div class="card-body">
+
                                             <div class="mb-3">
                                                 <label class="fw-semi-bold mb-2">Upload CSV File</label>
                                                 <div class="input-group mb-3">
@@ -174,6 +198,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="col-12 col-lg-6">
                                     <div class="card mb-4 shadow">
                                         <div class="card-header">
@@ -185,30 +210,28 @@
                                         </div>
                                         <div class="card-body">
                                             <div class="table-responsive">
-                                                <table class="table display table-bordered table-striped table-hover basic">
+                                                <table class="table table-striped table-bordered dt-responsive nowrap bootstrap4">
                                                     <thead>
                                                         <tr>
-                                                            <th>Name</th>
-                                                            <th>Position</th>
-                                                            <th>Office</th>
+                                                            <th>SL.</th>
+                                                            <th>Satet name</th>
+                                                            <th>Action</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td>Tiger Nixon</td>
-                                                            <td>System Architect</td>
-                                                            <td>Edinburgh</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Garrett Winters</td>
-                                                            <td>Accountant</td>
-                                                            <td>Tokyo</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Ashton Cox</td>
-                                                            <td>Junior Technical Author</td>
-                                                            <td>San Francisco</td>
-                                                        </tr>
+                                                        @php
+                                                        $i=1;
+                                                            @endphp
+                                                            @foreach ($states as $item)
+                                                            <tr>
+                                                                <td>{{$i++}}</td>
+                                                                <td>{{$item->state_name}}</td>
+                                                                <td>
+                                                                    <a href="javascript:void(0)" class="btn btn-success-soft btn-sm me-1"><i class="far fa-edit"></i></a>
+                                                                    <a href="javascript:void(0)" class="btn btn-danger-soft btn-sm"><i class="far fa-trash-alt"></i></a>
+                                                                </td>
+                                                            </tr>
+                                                            @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -217,128 +240,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="pills-location" role="tabpanel" aria-labelledby="pills-location-tab">
-                            <div class="row">
-                                <div class="col-12 col-lg-6">
-                                    <div class="card mb-4 shadow">
-                                        <div class="card-header">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <div>
-                                                    <h6 class="fs-17 fw-semi-bold mb-0">State setup</h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="mb-3">
-                                                <label class="col-form-label text-end fw-semi-bold">Country Name</label>
-                                                <div class="col-12">
-                                                    <select class="form-control placeholder-single">                                       
-                                                        <optgroup label="Central Time Zone">
-                                                            <option value="AL">Alabama</option>
-                                                            <option value="AR">Arkansas</option>
-                                                            <option value="IL">Illinois</option>
-                                                            <option value="IA">Iowa</option>
-                                                            <option value="KS">Kansas</option>
-                                                            <option value="KY">Kentucky</option>
-                                                            <option value="LA">Louisiana</option>
-                                                            <option value="MN">Minnesota</option>
-                                                            <option value="MS">Mississippi</option>
-                                                            <option value="MO">Missouri</option>
-                                                            <option value="OK">Oklahoma</option>
-                                                            <option value="SD">South Dakota</option>
-                                                            <option value="TX">Texas</option>
-                                                            <option value="TN">Tennessee</option>
-                                                            <option value="WI">Wisconsin</option>
-                                                        </optgroup>                                              
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="col-form-label text-end fw-semi-bold">State(s)</label>
-                                                <div class="col-12">
-                                                    <select class="form-control placeholder-single">                                       
-                                                        <optgroup label="Central Time Zone">
-                                                            <option value="AL">Alabama</option>
-                                                            <option value="AR">Arkansas</option>
-                                                            <option value="IL">Illinois</option>
-                                                            <option value="IA">Iowa</option>
-                                                            <option value="KS">Kansas</option>
-                                                            <option value="KY">Kentucky</option>
-                                                            <option value="LA">Louisiana</option>
-                                                            <option value="MN">Minnesota</option>
-                                                            <option value="MS">Mississippi</option>
-                                                            <option value="MO">Missouri</option>
-                                                            <option value="OK">Oklahoma</option>
-                                                            <option value="SD">South Dakota</option>
-                                                            <option value="TX">Texas</option>
-                                                            <option value="TN">Tennessee</option>
-                                                            <option value="WI">Wisconsin</option>
-                                                        </optgroup>                                              
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="fw-semi-bold">Location Name *</label>
-                                                <div class="input-group mb-3">
-                                                    <input type="text" class="form-control" placeholder="Country Name" aria-label="Recipient's username">
-                                                </div>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="fw-semi-bold mb-2">Upload CSV File</label>
-                                                <div class="input-group mb-3">
-                                                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                                                </div>
-                                            </div>
-                                            <div class="mb-3 justify-content-end me-1">
-                                                <button type="button" class="btn btn-danger w-auto me-2">Dawonload Demo File</button>
-                                                <button type="button" class="btn btn-success w-auto">Save</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-lg-6">
-                                    <div class="card mb-4 shadow">
-                                        <div class="card-header">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <div>
-                                                    <h6 class="fs-17 fw-semi-bold mb-0">State List</h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="table-responsive">
-                                                <table class="table display table-bordered table-striped table-hover basic">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Name</th>
-                                                            <th>Position</th>
-                                                            <th>Office</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>Tiger Nixon</td>
-                                                            <td>System Architect</td>
-                                                            <td>Edinburgh</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Garrett Winters</td>
-                                                            <td>Accountant</td>
-                                                            <td>Tokyo</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Ashton Cox</td>
-                                                            <td>Junior Technical Author</td>
-                                                            <td>San Francisco</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
+
+
                         <div class="tab-pane fade" id="pills-region" role="tabpanel" aria-labelledby="pills-region-tab">
                             <div class="row">
                                 <div class="col-12 col-lg-6">
@@ -354,43 +258,41 @@
                                             <div class="mb-3">
                                                 <label class="col-form-label text-end fw-semi-bold">State(s)</label>
                                                 <div class="col-12">
-                                                    <select class="form-control placeholder-single">                                       
-                                                        <optgroup label="Central Time Zone">
-                                                            <option value="AL">Alabama</option>
-                                                            <option value="AR">Arkansas</option>
-                                                            <option value="IL">Illinois</option>
-                                                            <option value="IA">Iowa</option>
-                                                            <option value="KS">Kansas</option>
-                                                            <option value="KY">Kentucky</option>
-                                                            <option value="LA">Louisiana</option>
-                                                            <option value="MN">Minnesota</option>
-                                                            <option value="MS">Mississippi</option>
-                                                            <option value="MO">Missouri</option>
-                                                            <option value="OK">Oklahoma</option>
-                                                            <option value="SD">South Dakota</option>
-                                                            <option value="TX">Texas</option>
-                                                            <option value="TN">Tennessee</option>
-                                                            <option value="WI">Wisconsin</option>
-                                                        </optgroup>                                              
+                                                    <select class="form-control placeholder-single" name="state_id">                                       
+                                                        @foreach ($states as $item)    
+                                                        <option value="{{$item->id}}">{{$item->state_name}}</option>
+                                                        @endforeach                                    
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="mb-3">
                                                 <label class="fw-semi-bold">Region Name *</label>
                                                 <div class="input-group mb-3">
-                                                    <input type="text" class="form-control" placeholder="Country Name" aria-label="Recipient's username">
+                                                    <input type="text" class="form-control" placeholder="Region Name" name="region_name">
                                                 </div>
                                             </div>
+
+                                            <div class="mb-3 justify-content-end me-1">
+                                                <button type="button" class="btn btn-success w-auto">Save</button>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="card-body">
+
+
                                             <div class="mb-3">
                                                 <label class="fw-semi-bold mb-2">Upload CSV File</label>
                                                 <div class="input-group mb-3">
                                                     <input type="file" class="form-control-file" id="exampleFormControlFile1">
                                                 </div>
                                             </div>
+
                                             <div class="mb-3 justify-content-end me-1">
                                                 <button type="button" class="btn btn-danger w-auto me-2">Dawonload Demo File</button>
                                                 <button type="button" class="btn btn-success w-auto">Save</button>
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -399,36 +301,34 @@
                                         <div class="card-header">
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <div>
-                                                    <h6 class="fs-17 fw-semi-bold mb-0">State List</h6>
+                                                    <h6 class="fs-17 fw-semi-bold mb-0">Region List</h6>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="card-body">
                                             <div class="table-responsive">
-                                                <table class="table display table-bordered table-striped table-hover basic">
+                                                <table class="table table-striped table-bordered dt-responsive nowrap bootstrap4">
                                                     <thead>
                                                         <tr>
-                                                            <th>Name</th>
-                                                            <th>Position</th>
-                                                            <th>Office</th>
+                                                            <th>SL.</th>
+                                                            <th>Region name</th>
+                                                            <th>Action</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td>Tiger Nixon</td>
-                                                            <td>System Architect</td>
-                                                            <td>Edinburgh</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Garrett Winters</td>
-                                                            <td>Accountant</td>
-                                                            <td>Tokyo</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Ashton Cox</td>
-                                                            <td>Junior Technical Author</td>
-                                                            <td>San Francisco</td>
-                                                        </tr>
+                                                        @php
+                                                        $i=1;
+                                                            @endphp
+                                                            @foreach ($regions as $item)
+                                                            <tr>
+                                                                <td>{{$i++}}</td>
+                                                                <td>{{$item->region_name}}</td>
+                                                                <td>
+                                                                    <a href="javascript:void(0)" class="btn btn-success-soft btn-sm me-1"><i class="far fa-edit"></i></a>
+                                                                    <a href="javascript:void(0)" class="btn btn-danger-soft btn-sm"><i class="far fa-trash-alt"></i></a>
+                                                                </td>
+                                                            </tr>
+                                                            @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -437,6 +337,105 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="tab-pane fade" id="pills-location" role="tabpanel" aria-labelledby="pills-region-tab">
+                            <div class="row">
+                                <div class="col-12 col-lg-6">
+                                    <div class="card mb-4 shadow">
+
+                                        <div class="card-header">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <h6 class="fs-17 fw-semi-bold mb-0">Location setup</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card-body">
+                                            <div class="mb-3">
+                                                <label class="col-form-label text-end fw-semi-bold">Region</label>
+                                                <div class="col-12">
+                                                    <select class="form-control placeholder-single" name="region_id">                                       
+                                                        @foreach ($regions as $item)    
+                                                        <option value="{{$item->id}}">{{$item->region_name}}</option>
+                                                        @endforeach                                    
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="fw-semi-bold">Location Name *</label>
+                                                <div class="input-group mb-3">
+                                                    <input type="text" class="form-control" placeholder="Location Name" name="location_name">
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3 justify-content-end me-1">
+                                                <button type="button" class="btn btn-success w-auto">Save</button>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="card-body">
+
+                                            <div class="mb-3">
+                                                <label class="fw-semi-bold mb-2">Upload CSV File</label>
+                                                <div class="input-group mb-3">
+                                                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3 justify-content-end me-1">
+                                                <button type="button" class="btn btn-danger w-auto me-2">Dawonload Demo File</button>
+                                                <button type="button" class="btn btn-success w-auto">Save</button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-lg-6">
+                                    <div class="card mb-4 shadow">
+                                        <div class="card-header">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <h6 class="fs-17 fw-semi-bold mb-0">Location List</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped table-bordered dt-responsive nowrap bootstrap4">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>SL.</th>
+                                                            <th>Location name</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @php
+                                                        $i=1;
+                                                            @endphp
+                                                            @foreach ($regions as $item)
+                                                            <tr>
+                                                                <td>{{$i++}}</td>
+                                                                <td>{{$item->region_name}}</td>
+                                                                <td>
+                                                                    <a href="javascript:void(0)" class="btn btn-success-soft btn-sm me-1"><i class="far fa-edit"></i></a>
+                                                                    <a href="javascript:void(0)" class="btn btn-danger-soft btn-sm"><i class="far fa-trash-alt"></i></a>
+                                                                </td>
+                                                            </tr>
+                                                            @endforeach
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
             </div>

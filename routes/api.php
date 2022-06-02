@@ -22,7 +22,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::apiResource('api_outlets',OutletController::class)->middleware('auth:jwt_auth');
 
-
 Route::controller(JwtAuthController::class)->group(function () {
 
     Route::post('login', 'login');
@@ -32,7 +31,7 @@ Route::controller(JwtAuthController::class)->group(function () {
         Route::post('logout', 'logout');
         Route::post('me', 'me');
     });
-   
+    
 });
 
 

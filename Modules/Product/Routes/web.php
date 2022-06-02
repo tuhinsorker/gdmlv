@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -11,6 +12,10 @@
 |
 */
 
-Route::prefix('product')->group(function() {
-    Route::get('/', 'ProductController@index');
+
+Route::middleware(['web'])->group(function () {
+    Route::resource('products', ProductController::class);
+    Route::resource('product-category', ProductCategoryController::class);
+    Route::resource('posms-item', PosmsController::class);
 });
+

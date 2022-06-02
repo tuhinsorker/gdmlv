@@ -9,21 +9,10 @@
     <meta name="author" content="Bdtask">
     <title>Bhulua - Bootstrap 5 Admin Template Deshboard</title>
     <!-- App favicon -->
-    <link rel="shortcut icon" href="assets/dist/img/favicon.png">
-    <!--Global Styles(used by all pages)-->
-    <link href="{{url('assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-    <!--<link href="{{url('assets/plugins/bootstrap/css/bootstrap.rtl.min.css')}}" rel="stylesheet">-->
-    <link href="{{url('assets/plugins/metisMenu/metisMenu.css')}}" rel="stylesheet">
-    <!--<link href="{{url('assets/plugins/metisMenu/metisMenu-rtl.css')}}" rel="stylesheet">-->
-    <link href="{{url('assets/plugins/fontawesome/css/all.min.css')}}" rel="stylesheet">
-    <link href="{{url('assets/plugins/typicons/src/typicons.min.css')}}" rel="stylesheet">
-    <link href="{{url('assets/plugins/themify-icons/themify-icons.min.css')}}" rel="stylesheet">
-    <!--Third party Styles(used by this page)-->
+    <link rel="shortcut icon" href="{{ (@appSetting()->favicon) ? asset('public/'.@appSetting()->favicon) : url('avatar.png')  }}">
+    <link href="{{url('public/assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{url('public/assets/dist/css/style-new.css')}}" rel="stylesheet">
 
-    <!--Start Your Custom Style Now-->
-    <link href="{{url('assets/dist/css/style-new.css')}}" rel="stylesheet">
-    <!-- <link href="assets/dist/css/style.css')}}" rel="stylesheet"> -->
-    <!--<link href="assets/dist/css/style.rtl.css')}}" rel="stylesheet">-->
 </head>
 
 <body>
@@ -33,8 +22,7 @@
                 <div class="panel">
 
                     <a href="{{ url('/home') }}" class="sidebar-brand">
-                        <img src="{{ (appSetting()->app_logo) ? asset('images/'.appSetting()->app_logo) : url('avatar.png')  }}" >
-                        {{-- <span class="sidebar-brand_text">{{ appSetting()->title }}</span> --}}
+                        <img src="{{ (appSetting()->app_logo) ? asset('/public/'.appSetting()->app_logo) : url('avatar.png')  }}" >
                     </a>
 
                     <div class="panel-header text-center mb-3">
@@ -76,29 +64,67 @@
                             {{ __('Login') }}
                         </button>
                     </form>
+
+                    <br>
+
+                    <div class="panel-footer m-t-10">
+                        <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Email</th>
+                                <th>Password</th>
+                                <th>Role</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>admin@gmail.com</td>
+                                    <td>12345678</td>
+                                    <td>Admin</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                <div class="bottom-text text-center my-3">
+
+                {{-- <div class="bottom-text text-center my-3">
                     @if (Route::has('password.request'))
                         <a class="btn btn-link fw-medium" href="{{ route('password.request') }}">
                             {{ __('Forgot Your Password?') }}
                         </a>
                     @endif
+                </div> --}}
 
-                </div>
+              
+
+                    
+
             </div>
         </div>
     </div>
     <!-- /.End of form wrapper -->
     <!--Global script(used by all pages)-->
-    <script src="{{url('assets/plugins/jQuery/jquery.min.js')}}"></script>
-    <script src="{{url('assets/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-    <script src="{{url('assets/plugins/metisMenu/metisMenu.min.js')}}"></script>
-    <script src="{{url('assets/plugins/perfect-scrollbar/dist/perfect-scrollbar.min.js')}}"></script>
+    <script src="{{url('public/assets/plugins/jQuery/jquery.min.js')}}"></script>
+    <script src="{{url('public/assets/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <!-- Third Party Scripts(used by this page)-->
 
 
-    <!--Page Scripts(used by all page)-->
-    <script src="{{url('assets/dist/js/sidebar.js')}}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            setTimeout(function () {
+                $('.page-loader-wrapper').fadeOut();
+            }, 50);
+            var info = $('table tbody tr');
+            info.click(function() {
+                var username    = $(this).children().first().text();
+
+                var password = $(this).children().first().next().text();
+               
+                $("input[type=email]").val(username);
+                $("input[type=password]").val(password);
+            });
+        });
+    </script>
 </body>
 
 </html>

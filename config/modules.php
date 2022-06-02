@@ -253,6 +253,7 @@ return [
          * @example boot|register
          */
         'files' => 'register',
+
     ],
 
     /*

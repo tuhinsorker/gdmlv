@@ -11,39 +11,7 @@
     </div>
     <div class="navbar-icon d-flex">
         <ul class="navbar-nav flex-row align-items-center">
-            <li class="nav-item dropdown quick-actions">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="typcn typcn-th-large-outline"></i>
-                </a>
-                <div class="dropdown-menu">
-                    <div class="nav-grid-row row">
-                        <a href="#" class="icon-menu-item col-4">
-                            <i class="typcn typcn-cog-outline d-block"></i>
-                            <span>Settings</span>
-                        </a>
-                        <a href="#" class="icon-menu-item col-4">
-                            <i class="typcn typcn-group-outline d-block"></i>
-                            <span>Users</span>
-                        </a>
-                        <a href="#" class="icon-menu-item col-4">
-                            <i class="typcn typcn-puzzle-outline d-block"></i>
-                            <span>Components</span>
-                        </a>
-                        <a href="#" class="icon-menu-item col-4">
-                            <i class="typcn typcn-chart-bar-outline d-block"></i>
-                            <span>Profits</span>
-                        </a>
-                        <a href="#" class="icon-menu-item col-4">
-                            <i class="typcn typcn-time d-block"></i>
-                            <span>New Event</span>
-                        </a>
-                        <a href="#" class="icon-menu-item col-4">
-                            <i class="typcn typcn-edit d-block"></i>
-                            <span>Tasks</span>
-                        </a>
-                    </div>
-                </div>
-            </li>
+           
             <!--/.dropdown-->
             <li class="nav-item">
                 <a class="nav-link" href="#" id="btnFullscreen"><i class="full-screen_icon typcn typcn-arrow-move-outline"></i></a>
@@ -108,7 +76,7 @@
                     </div>
                     <div class="user-header">
                         <div class="img-user">
-                            <img src="assets/dist/img/avatar-1.jpg" alt="">
+                            <img src="{{url('public/assets/dist/img/avatar-1.jpg')}}" alt="">
                         </div><!-- img-user -->
                         <h6>{{ Auth::user()->name }}</h6>
                         <span>{{ Auth::user()->email }}</span>

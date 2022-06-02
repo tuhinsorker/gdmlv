@@ -15,8 +15,7 @@
                         </div>
                         <div class="text-end">
                             <div class="actions">
-                                <a href="#" class="action-item"><i class="ti-reload"></i></a>
-                                <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#langModal"><i class="fa fa-user-plus"  ></i>&nbsp{{__('Add Language')}}</button>
+                                <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#langModal">&nbsp{{__('Add Language')}}</button>
                                 @include('setting::modal.lang_modal')
                             </div>
                         </div>

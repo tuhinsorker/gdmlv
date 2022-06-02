@@ -5,6 +5,8 @@ namespace Modules\Role\Entities;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+use Modules\Role\Entities\SubModule;
+
 class Module extends Model
 {
     use HasFactory;
@@ -13,8 +15,8 @@ class Module extends Model
         return $this->hasMany(SubModule::class);
     }
 
-   public function subModule(){
+    public function subModule(){
        return $this->hasOne(SubModule::class);
 
-   }
+    }
 }

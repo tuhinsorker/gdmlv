@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('client')->group(function() {
+Route::prefix('client')->middleware('web')->group(function() {
     Route::get('/', 'ClientController@index');
     Route::post('/client_store', 'ClientController@store')->name('client_store');
     Route::get('/client_edit/{id}', 'ClientController@edit')->name('client_edit');

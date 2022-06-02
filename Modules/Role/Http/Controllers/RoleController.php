@@ -6,10 +6,15 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
+use Modules\Role\Http\Requests\UserAssignRequest;
+
 use Modules\Role\Entities\UserRole;
 use Modules\Role\Entities\Role;
 use Modules\Role\Entities\Module;
 use Modules\Role\Entities\RolePermission;
+
+
+use App\Models\User;
 
 class RoleController extends Controller
 {
@@ -20,7 +25,7 @@ class RoleController extends Controller
     public function index()
     {
         $roles = Role::orderBy('id' , 'desc')->get();
-        return view('role::index',[
+        return view('role::__role_list',[
             'roles' => $roles
         ]);
     }
@@ -32,8 +37,7 @@ class RoleController extends Controller
     public function create()
     {
         $modules = Module::get();
-        
-        return view('role::create',[
+        return view('role::__create',[
             'modules' => $modules
         ]);
     }
@@ -45,7 +49,6 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-
         $this->roleStoreUpdate($request);
         return redirect()->route('roles.index');
     }
@@ -114,11 +117,10 @@ class RoleController extends Controller
 
 
     private function roleStoreUpdate($request){
-        $role_id = $this->createRole($request->role_id);
 
-    
-
+        $role_id = $this->createRole($request->role_name);
         $sub_module_id = $request->sub_module_id;
+        
         $create       = $request->create;
         $read         = $request->read;
         $update       = $request->update;
@@ -144,7 +146,6 @@ class RoleController extends Controller
 
         if ($this->createPermission($new_array)) {
             $id = $this->createPermission($new_array);
-
             // success message
         }
         else {
@@ -153,10 +154,12 @@ class RoleController extends Controller
     }
 
     private function createRole($role_id){
+
         $role = new Role();
         $role->type = $role_id;
         $role->save();
         return  $role->id;
+
     }
 
     private function createPermission($data){
@@ -166,18 +169,30 @@ class RoleController extends Controller
     }
 
     public function getUserAssign(){
-        $users = User::withoutGlobalScopes([Asc::class])->whereNot('user_type',1)->get();
-        $roles = Role::withoutGlobalScopes([Asc::class])->get();
-        return view('role::user-assign-role',[
+
+        $users = User::whereNotIn('user_type',[1])->get();
+        $roles = Role::get();
+
+        $userrole = UserRole::get();
+
+        dd($userrole->role);
+
+
+        return view('role::__user-assign-role',[
             'users' =>  $users,
-            'roles' =>  $roles
+            'roles' =>  $roles,
+            'user_role' => $userrole
         ]);
+
     }
+
+
 
     public function getUserAssignRoleStore(UserAssignRequest $request){
         $user_role = new UserRole();
         $user_role->fill($request->all());
         $user_role->save();
+
         return redirect()->route('roles.index')->with('success','User Role assigned successfully');
 
     }

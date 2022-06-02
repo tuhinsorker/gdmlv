@@ -19,3 +19,4 @@ Route::prefix('location')->group(function() {
 });
 
 Route::resource('group-location', GroupLocationController::class);
+

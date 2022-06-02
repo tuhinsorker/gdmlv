@@ -1,3 +1,11 @@
+@extends('layouts.backend')
+@push('css')
+@endpush
+
+@section('content')
+   
+    
+
 <div class="body-content">
     <div class="row">
         <div class="col-12">
@@ -68,3 +76,8 @@
         </div>
     </div>
 </div>
+
+@endsection
+
+@push('js')
+@endpush

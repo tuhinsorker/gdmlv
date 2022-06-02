@@ -18,5 +18,6 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
+Route::middleware('web')->group(function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+});

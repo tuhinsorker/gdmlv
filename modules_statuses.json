@@ -6,5 +6,6 @@
     "Product": true,
     "Role": true,
     "User": true,
-    "Location": true
+    "Location": true,
+    "VisitProcess": true
 }

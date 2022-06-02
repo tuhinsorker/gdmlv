@@ -23,3 +23,9 @@ Route::prefix('setting')->group(function() {
     Route::get('lang-edit/{slug}','LanguageController@edit')->name('lang.edit');
     Route::post('lang-update/{slug}','LanguageController@update')->name('lang.update');
 });
+
+Route::resource('brifs', BrifsController::class);
+
+Route::resource('teams', TeamController::class);
+Route::resource('banks', BankController::class);
+Route::resource('payment-types', PaymentTypeController::class);

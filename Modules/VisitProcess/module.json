@@ -1,0 +1,13 @@
+{
+    "name": "VisitProcess",
+    "alias": "visitprocess",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\VisitProcess\\Providers\\VisitProcessServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
